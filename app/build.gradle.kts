@@ -44,6 +44,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 
@@ -55,4 +56,13 @@ dependencies {
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
+
+    dependencies {
+        // Import the BoM for the Firebase platform
+        implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+
+        // Add the dependency for the Realtime Database library
+        // When using the BoM, you don't specify versions in Firebase library dependencies
+        implementation("com.google.firebase:firebase-database")
+    }
 }
