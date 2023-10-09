@@ -20,6 +20,15 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <EditText
+            android:id="@+id/Register_Username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="text" />
+
+        <EditText
             android:id="@+id/Register_Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,6 +63,7 @@
 
         <EditText
             android:id="@+id/Result_text"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

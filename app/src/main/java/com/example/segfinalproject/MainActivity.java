@@ -7,14 +7,15 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
-
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
     Switch isAClub;
     EditText email;
     EditText password;
-
+    EditText username;
     EditText result;
 
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         isAClub  = (Switch) findViewById(R.id.Club_Switch);
+        username = (EditText) findViewById(R.id.Register_Username);
         email = (EditText) findViewById(R.id.Register_Email);
         password = (EditText) findViewById(R.id.Register_Password);
         result = (EditText) findViewById(R.id.Result_text);
@@ -33,20 +35,24 @@ public class MainActivity extends AppCompatActivity {
         Account newAccount;
         String accountType = "";
 
-        if(!isEmailValid(email)){
+        if(!isUsernameValid(username)){
+            result.setText("INVALID USERNAME");
+        }
+        else if(!isEmailValid(email)){
             result.setText("INVALID EMAIL");
         }else if(!isPasswordValid(password)){
             result.setText("INVALID PASSWORD");
         }else{
             if(isAClub.isChecked()){
-                newAccount = new Club(email.getText().toString(),password.getText().toString());
+                newAccount = new Club(username.getText().toString(), email.getText().toString(),password.getText().toString());
                 accountType = "CLUB";
             }else{
-                newAccount = new User(email.getText().toString(), password.getText().toString());
+                newAccount = new User(username.getText().toString(), email.getText().toString(), password.getText().toString());
                 accountType = "USER";
             }
 
-            result.setText("Email: " + newAccount.getEmail() + " Password: " + newAccount.getPassword() + " Account Type: " + accountType);
+            UploadUser(newAccount);
+            result.setText("Name: " + newAccount.getUsername() + " Email: " + newAccount.getEmail() + " Password: " + newAccount.getPassword() + " Account Type: " + accountType);
         }
 
 
@@ -63,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isPasswordValid(EditText email){
+    public boolean isPasswordValid(EditText password){
         String passwordInput = password.getText().toString();
 
         if(!passwordInput.isEmpty()){
@@ -73,7 +79,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public boolean isUsernameValid(EditText username){
+        String usernameInput = username.getText().toString();
+
+        if(!usernameInput.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void UploadUser(Account account){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        DatabaseReference newUserRoleRef = database.getReference("users/" + account.getUsername() + "/role");
+        DatabaseReference newUserEmailRef = database.getReference("users/" + account.getUsername() + "/email");
+        DatabaseReference newUserPasswordRef = database.getReference("users/" + account.getUsername() + "/password");
+
+        newUserRoleRef.setValue(account.getRoll());
+        newUserEmailRef.setValue(account.getEmail());
+        newUserPasswordRef.setValue(account.getPassword());
 
     }
 }
