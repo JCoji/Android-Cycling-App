@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         Account newAccount;
         String accountType = "";
 
+        String ADMIN_USERNAME = "admin";
+        String ADMIN_PWD = "admin";
+
         if(!isUsernameValid(username)){
             result.setText("INVALID USERNAME");
         }
@@ -46,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
         }else{
 
             //CHECK IF ADMIN CREDENTIALS
+            if (password.equals(ADMIN_PWD) && username.equals(ADMIN_USERNAME)){
+                newAccount = new Admin(username.getText().toString(), email.getText().toString(),password.getText().toString());
+                accountType= "ADMIN";
+                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                startActivity(intent);
+            }
 
             if(isAClub.isChecked()){
                 newAccount = new Club(username.getText().toString(), email.getText().toString(),password.getText().toString());

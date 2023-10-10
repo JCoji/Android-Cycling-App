@@ -122,6 +122,7 @@
                 android:fontFamily="serif"
                 android:onClick="Register_Email_Click"
                 android:text="Register"
+                android:textColor="#FEFAE0"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
