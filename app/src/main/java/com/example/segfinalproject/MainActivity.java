@@ -55,15 +55,21 @@ public class MainActivity extends AppCompatActivity {
             UploadUser(newAccount);
             result.setText("Name: " + newAccount.getUsername() + " Email: " + newAccount.getEmail() + " Password: " + newAccount.getPassword() + " Account Type: " + accountType);
 
+            //Checks if the Account is a user account or club account then sets the activity to a user or club account
             if (newAccount.getRoll().equals("CLUB")){
                 Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
-                startActivityForResult(intent, 0);
+                startActivity(intent);
             } else {
                 Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-                startActivityForResult(intent, 0);
+                startActivity(intent);
             }
         }
-
+            /*
+             * CODE FOR ADMIN ACTIVITY:
+             *
+             * Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+               startActivity(intent);
+             */
 
 
     }
