@@ -4,71 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#BC6C25"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TEMP LOGIN"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:layout_height="100dp"
+            android:layout_weight="1" />
 
-        <EditText
-            android:id="@+id/Register_Username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/title_bicycle_image"
+            android:layout_width="340dp"
+            android:layout_height="150dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="Username"
-            android:inputType="text" />
+            android:src="@tools:sample/avatars"
+            app:srcCompat="@drawable/bicycle_symbol" />
 
-        <EditText
-            android:id="@+id/Register_Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="430dp"
+            android:layout_height="750dp"
+            android:layout_gravity="center|center_vertical"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="Email:"
-            android:inputType="textEmailAddress" />
+            android:background="#FEFAE0"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/Register_Password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Password:"
-            android:inputType="textPassword" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_weight="1" />
 
-        <Switch
-            android:id="@+id/Club_Switch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Make Club Account?" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="@string/activity_main_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:onClick="Register_Email_Click"
-            android:text="Register" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_weight="1" />
 
-        <EditText
-            android:id="@+id/Result_text"
-            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            <EditText
+                android:id="@+id/Register_Username"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Username"
+                android:inputType="text"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/Register_Email"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Email:"
+                android:inputType="textEmailAddress"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/Register_Password"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Password:"
+                android:inputType="textPassword"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_weight="1" />
+
+            <Switch
+                android:id="@+id/Club_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="Make Club Account?"
+                android:textSize="12sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="#BC6C25"
+                android:fontFamily="serif"
+                android:onClick="Register_Email_Click"
+                android:text="Register"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/Result_text"
+                android:layout_width="370dp"
+                android:layout_height="10dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:inputType="text"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Result" />
+            android:layout_height="200dp"
+            android:layout_weight="1" />
+
     </LinearLayout>
 </RelativeLayout>
