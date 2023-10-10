@@ -44,25 +44,26 @@ public class MainActivity extends AppCompatActivity {
         }else if(!isPasswordValid(password)){
             result.setText("INVALID PASSWORD");
         }else{
+
+            //CHECK IF ADMIN CREDENTIALS
+
             if(isAClub.isChecked()){
                 newAccount = new Club(username.getText().toString(), email.getText().toString(),password.getText().toString());
                 accountType = "CLUB";
+                Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
+                startActivity(intent);
             }else{
                 newAccount = new User(username.getText().toString(), email.getText().toString(), password.getText().toString());
                 accountType = "USER";
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                startActivity(intent);
             }
 
             UploadUser(newAccount);
             result.setText("Name: " + newAccount.getUsername() + " Email: " + newAccount.getEmail() + " Password: " + newAccount.getPassword() + " Account Type: " + accountType);
 
             //Checks if the Account is a user account or club account then sets the activity to a user or club account
-            if (newAccount.getRoll().equals("CLUB")){
-                Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
-                startActivity(intent);
-            } else {
-                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-                startActivity(intent);
-            }
+
         }
             /*
              * CODE FOR ADMIN ACTIVITY:
