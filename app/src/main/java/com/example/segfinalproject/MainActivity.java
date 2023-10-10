@@ -2,6 +2,7 @@ package com.example.segfinalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -53,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
             UploadUser(newAccount);
             result.setText("Name: " + newAccount.getUsername() + " Email: " + newAccount.getEmail() + " Password: " + newAccount.getPassword() + " Account Type: " + accountType);
+
+            if (newAccount.getRoll().equals("CLUB")){
+                Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
+                startActivityForResult(intent, 0);
+            } else {
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                startActivityForResult(intent, 0);
+            }
         }
 
 
