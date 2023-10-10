@@ -49,39 +49,27 @@ public class MainActivity extends AppCompatActivity {
         }else{
 
             //CHECK IF ADMIN CREDENTIALS
-            if (password.equals(ADMIN_PWD) && username.equals(ADMIN_USERNAME)){
+            if (password.getText().toString().equals(ADMIN_PWD) && username.getText().toString().equals(ADMIN_USERNAME)){
                 newAccount = new Admin(username.getText().toString(), email.getText().toString(),password.getText().toString());
-                accountType= "ADMIN";
+                //accountType= "ADMIN";
                 Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
                 startActivity(intent);
             }
 
-            if(isAClub.isChecked()){
+            else if(isAClub.isChecked()){
                 newAccount = new Club(username.getText().toString(), email.getText().toString(),password.getText().toString());
-                accountType = "CLUB";
+                //accountType = "CLUB";
                 Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
                 startActivity(intent);
             }else{
                 newAccount = new User(username.getText().toString(), email.getText().toString(), password.getText().toString());
-                accountType = "USER";
+                //accountType = "USER";
                 Intent intent = new Intent(getApplicationContext(), UserActivity.class);
                 startActivity(intent);
             }
 
             UploadUser(newAccount);
-            result.setText("Name: " + newAccount.getUsername() + " Email: " + newAccount.getEmail() + " Password: " + newAccount.getPassword() + " Account Type: " + accountType);
-
-            //Checks if the Account is a user account or club account then sets the activity to a user or club account
-
         }
-            /*
-             * CODE FOR ADMIN ACTIVITY:
-             *
-             * Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-               startActivity(intent);
-             */
-
-
     }
 
     public boolean isEmailValid(EditText email){

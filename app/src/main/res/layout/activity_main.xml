@@ -17,14 +17,6 @@
             android:layout_height="100dp"
             android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/title_bicycle_image"
-            android:layout_width="340dp"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            android:src="@tools:sample/avatars"
-            app:srcCompat="@drawable/bicycle_symbol" />
-
         <LinearLayout
             android:layout_width="430dp"
             android:layout_height="750dp"

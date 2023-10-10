@@ -7,15 +7,6 @@
     android:background="#BC6C25"
     tools:context=".AdminActivity">
 
-    <ImageView
-        android:id="@+id/admin_prof_bicycle_image"
-        android:layout_width="160dp"
-        android:layout_height="115dp"
-        android:src="@tools:sample/avatars"
-        app:srcCompat="@drawable/bicycle_symbol"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="145dp" />
-
     <LinearLayout
         android:layout_width="345dp"
         android:layout_height="230dp"

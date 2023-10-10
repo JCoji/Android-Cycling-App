@@ -6,6 +6,6 @@ public class User extends Account{
         this.email = email;
         this.password = password;
 
-        final String roll = "USER";
+        roll = "USER";
     }
 }

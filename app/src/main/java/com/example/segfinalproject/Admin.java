@@ -6,7 +6,7 @@ public class Admin extends Account{
         this.email = email;
         this.password = "admin";
 
-        final String roll = "ADMIN";
+        roll = "ADMIN";
     }
 
 }
