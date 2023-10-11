@@ -27,6 +27,12 @@
             android:gravity="center|center_horizontal|center_vertical"
             android:text="This is a club profile"
             android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/clubText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

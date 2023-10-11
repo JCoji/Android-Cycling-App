@@ -60,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
                 newAccount = new Club(username.getText().toString(), email.getText().toString(),password.getText().toString());
                 //accountType = "CLUB";
                 Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
+                intent.putExtra("Username", newAccount.getUsername());
                 startActivity(intent);
             }else{
                 newAccount = new User(username.getText().toString(), email.getText().toString(), password.getText().toString());
                 //accountType = "USER";
                 Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                intent.putExtra("Clubname", newAccount.getUsername());
                 startActivity(intent);
             }
 
