@@ -29,15 +29,22 @@
 
         <Button
             android:id="@+id/btn_mAccounts"
-            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="319dp"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:onClick="AccountManagerOnClick"
+=======
+            android:backgroundTint="#BC6C25"
+>>>>>>> 83f9761a0731c53cf1fbed7b39c68c4fdfde30d1
             android:text="Manage Accounts" />
 
         <Button
             android:id="@+id/btn_mEvents"
-            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="317dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="#BC6C25"
             android:text="Manage Events" />
 
     </LinearLayout>
