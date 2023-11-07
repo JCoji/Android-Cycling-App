@@ -20,7 +20,7 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     public void EventManagerOnClick(View view){
-        //Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), EventManager.class);
+        startActivity(intent);
     }
 }

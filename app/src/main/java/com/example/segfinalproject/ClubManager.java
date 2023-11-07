@@ -3,10 +3,14 @@ package com.example.segfinalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +38,15 @@ public class ClubManager extends AppCompatActivity {
         clubs = new ArrayList<>();
 
         databaseClubs = FirebaseDatabase.getInstance().getReference("clubs");
+
+        listViewClubs.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Club club = clubs.get(i);
+                deleteClub(club.getUsername());
+                return true;
+            }
+        });
     }
 
 
@@ -65,6 +78,17 @@ public class ClubManager extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void deleteClub(String userName) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("clubs").child(userName);
+        dR.removeValue();
+        Toast.makeText(getApplicationContext(), "Club Deleted", Toast.LENGTH_LONG).show();
+    }
+
+    public void backButtonOnClick(View view){
+        Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+        startActivity(intent);
     }
 
 
