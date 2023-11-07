@@ -26,6 +26,19 @@
             android:text="This is the admin account"
             android:textAlignment="center"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_mAccounts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Accounts" />
+
+        <Button
+            android:id="@+id/btn_mEvents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Events" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

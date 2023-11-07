@@ -57,10 +57,10 @@ dependencies {
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
 
-        // Import the BoM for the Firebase platform
+    // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 
-        // Add the dependency for the Realtime Database library
-        // When using the BoM, you don't specify versions in Firebase library dependencies
+    // Add the dependency for the Realtime Database library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-database")
 }
