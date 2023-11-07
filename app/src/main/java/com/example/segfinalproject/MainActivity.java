@@ -107,13 +107,29 @@ public class MainActivity extends AppCompatActivity {
     public void UploadUser(Account account){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        DatabaseReference newUserRoleRef = database.getReference("users/" + account.getUsername() + "/role");
-        DatabaseReference newUserEmailRef = database.getReference("users/" + account.getUsername() + "/email");
-        DatabaseReference newUserPasswordRef = database.getReference("users/" + account.getUsername() + "/password");
+        if(account.getRoll() == "CLUB"){
+            DatabaseReference newUserEmailRef = database.getReference("clubs/" + account.getUsername() + "/email");
+            DatabaseReference newUserPasswordRef = database.getReference("clubs/" + account.getUsername() + "/password");
 
-        newUserRoleRef.setValue(account.getRoll());
-        newUserEmailRef.setValue(account.getEmail());
-        newUserPasswordRef.setValue(account.getPassword());
+            newUserEmailRef.setValue(account.getEmail());
+            newUserPasswordRef.setValue(account.getPassword());
+
+        }else if(account.getRoll() == "USER"){
+            DatabaseReference newUserEmailRef = database.getReference("users/" + account.getUsername() + "/email");
+            DatabaseReference newUserPasswordRef = database.getReference("users/" + account.getUsername() + "/password");
+
+            newUserEmailRef.setValue(account.getEmail());
+            newUserPasswordRef.setValue(account.getPassword());
+        }else if(account.getRoll() == "ADMIN"){
+            DatabaseReference newUserEmailRef = database.getReference("admin/" + account.getUsername() + "/email");
+            DatabaseReference newUserPasswordRef = database.getReference("admin/" + account.getUsername() + "/password");
+
+            newUserEmailRef.setValue(account.getEmail());
+            newUserPasswordRef.setValue(account.getPassword());
+        }
+
+
+
 
     }
 }
