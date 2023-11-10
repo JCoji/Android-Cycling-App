@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventManager">
+    tools:context=".EventList">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,30 +12,32 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hold on Event to Delete"
-            android:textSize="24sp" />
+            android:text=""
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
-        <Button
-            android:id="@+id/btn_back"
+        <TextView
+            android:id="@+id/Age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="backButtonOnClick"
-            android:text="Back" />
+            android:text=""
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
-        <Button
-            android:id="@+id/btn_newEvent"
+        <TextView
+            android:id="@+id/Level"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:onClick="newEventButtonOnClick"
-            android:text="Create New Event" />
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
-        <ListView
-            android:id="@+id/EventList"
+        <TextView
+            android:id="@+id/Pace"
             android:layout_width="match_parent"
-            android:layout_height="585dp" />
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
