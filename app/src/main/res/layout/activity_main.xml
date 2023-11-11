@@ -97,6 +97,17 @@
                 android:layout_height="5dp"
                 android:layout_weight="1" />
 
+            <EditText
+                android:id="@+id/Result_Text"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:inputType="textPassword"
+                android:textSize="12sp" />
+
             <Button
                 android:id="@+id/button"
                 style="@style/Widget.MaterialComponents.Button"

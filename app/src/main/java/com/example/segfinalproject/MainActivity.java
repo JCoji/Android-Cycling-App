@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.Register_Username);
         email = (EditText) findViewById(R.id.Register_Email);
         password = (EditText) findViewById(R.id.Register_Password);
-        result = (EditText) findViewById(R.id.Result_text);
+        result = (EditText) findViewById(R.id.Result_Text);
     }
 
     public void Register_Email_Click(View view){
