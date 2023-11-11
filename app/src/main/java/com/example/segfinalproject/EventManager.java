@@ -97,6 +97,11 @@ public class EventManager extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void editEventButtonOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), UpdateEvent.class);
+        startActivity(intent);
+    }
+
     public void backButtonOnClick(View view){
         Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
         startActivity(intent);

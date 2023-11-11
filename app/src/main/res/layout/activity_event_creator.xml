@@ -19,7 +19,7 @@
             android:id="@+id/ActivityTitle"
             android:layout_width="match_parent"
             android:layout_height="76dp"
-            android:text="This is the Event Creator" />
+            android:text="This is the event editor" />
 
         <Button
             android:id="@+id/btn_back"
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:onClick="confirmButtonOnClick"
-            android:text="Confirm New Event" />
+            android:text="Submit Edit" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

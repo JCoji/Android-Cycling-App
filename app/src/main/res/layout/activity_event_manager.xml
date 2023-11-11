@@ -32,6 +32,13 @@
             android:onClick="newEventButtonOnClick"
             android:text="Create New Event" />
 
+        <Button
+            android:id="@+id/btn_editEvent"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:onClick="newEventButtonOnClick"
+            android:text="Edit Event" />
+
         <ListView
             android:id="@+id/EventList"
             android:layout_width="match_parent"
