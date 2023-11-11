@@ -9,6 +9,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="#192A51"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,55 +19,82 @@
 
         <TextView
             android:id="@+id/ActivityTitle"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:text="This is the Event Creator" />
+            android:layout_width="375dp"
+            android:layout_height="50dp"
+            android:background="@drawable/activity_main_border"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="EVENT EDITOR"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_back"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:onClick="backButtonOnClick"
-            android:text="Back" />
+            android:layout_height="20dp" />
 
-        <EditText
-            android:id="@+id/Register_title"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:hint="Event Title"
-            android:inputType="text"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="375dp"
+            android:layout_height="500dp"
+            android:background="@drawable/activity_main_border"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/Register_age"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:hint="Age"
-            android:inputType="text"
-            android:textSize="16sp" />
+            <EditText
+                android:id="@+id/Register_title"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:fontFamily="serif"
+                android:hint="Event Title"
+                android:inputType="text"
+                android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/Register_level"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:hint="Event Level"
-            android:inputType="text"
-            android:textSize="16sp" />
+            <EditText
+                android:id="@+id/Register_age"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:fontFamily="serif"
+                android:hint="Age"
+                android:inputType="text"
+                android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/Register_pace"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:hint="Event Pace"
-            android:inputType="text"
-            android:textSize="16sp" />
+            <EditText
+                android:id="@+id/Register_level"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:fontFamily="serif"
+                android:hint="Event Level"
+                android:inputType="text"
+                android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/btn_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:onClick="confirmButtonOnClick"
-            android:text="Confirm New Event" />
+            <EditText
+                android:id="@+id/Register_pace"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:fontFamily="serif"
+                android:hint="Event Pace"
+                android:inputType="text"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="290dp"
+                android:layout_height="75dp"
+                android:backgroundTint="#192A51"
+                android:fontFamily="serif"
+                android:onClick="confirmButtonOnClick"
+                android:text="Submit" />
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="290dp"
+                android:layout_height="75dp"
+                android:backgroundTint="#192A51"
+                android:fontFamily="serif"
+                android:onClick="backButtonOnClick"
+                android:text="Back" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

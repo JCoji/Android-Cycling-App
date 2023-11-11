@@ -20,7 +20,7 @@
 
         <ListView
             android:id="@+id/ClubList"
-            android:layout_width="345dp"
+            android:layout_width="375dp"
             android:layout_height="560dp"
             android:background="@drawable/activity_main_border">
 
@@ -31,7 +31,7 @@
             android:layout_height="20dp" />
 
         <LinearLayout
-            android:layout_width="345dp"
+            android:layout_width="375dp"
             android:layout_height="100dp"
             android:background="@drawable/activity_main_border"
             android:gravity="center"
@@ -53,6 +53,8 @@
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#192A51"
+                android:fontFamily="serif"
                 android:onClick="backButtonOnClick"
                 android:text="Return" />
         </LinearLayout>
