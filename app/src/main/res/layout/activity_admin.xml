@@ -4,48 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BC6C25"
+    android:background="#192A51"
     tools:context=".AdminActivity">
 
     <LinearLayout
-        android:layout_width="345dp"
-        android:layout_height="230dp"
-        android:background="#FEFAE0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:text="This is the admin account"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="75dp"
+            android:background="@drawable/activity_main_border"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_mAccounts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="AccountManagerOnClick"
-            android:text="Manage Accounts" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="EventManagerOnClick"
-            android:text="Manage Events" />
-
-        =======
-            android:backgroundTint="#BC6C25"
->>>>>>> 83f9761a0731c53cf1fbed7b39c68c4fdfde30d1
-            android:text="Manage Accounts" />
-
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="WELCOME ADMIN"
+                android:textAlignment="center"
+                android:textColor="#192A51"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="290dp"
+            android:background="@drawable/activity_main_border"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="ACTIONS:"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#192A51"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <Button
+                android:id="@+id/btn_mAccounts"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#192A51"
+                android:fontFamily="serif"
+                android:onClick="AccountManagerOnClick"
+                android:text="Manage Accounts"
+                android:textColor="#F5E6E8"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#192A51"
+                android:fontFamily="serif"
+                android:onClick="EventManagerOnClick"
+                android:text="Manage Events"
+                android:textColor="#F5E6E8"
+                android:textSize="12sp" /><![CDATA[
+
+            =======
+            android:backgroundTint="#BC6C25"
+            >>>>>>> 83f9761a0731c53cf1fbed7b39c68c4fdfde30d1
+            android:text="Manage Accounts" />
+
+        ]]>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
