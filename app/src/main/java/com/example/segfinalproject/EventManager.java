@@ -60,8 +60,6 @@ public class EventManager extends AppCompatActivity {
                 events.clear();
 
                 for(DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Toast.makeText(getApplicationContext(), postSnapshot.child("level").getValue().toString(), Toast.LENGTH_LONG).show();
-
                     Event event;
 
                     String level = "";
