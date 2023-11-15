@@ -1,5 +1,6 @@
 package com.example.segfinalproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,11 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 
@@ -18,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     EditText username;
     EditText result;
+
+    boolean success = false;
 
 
     @Override
@@ -32,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         result = (EditText) findViewById(R.id.Result_Text);
     }
 
-    public void Register_Email_Click(View view){
+    public void Register_Click(View view){
         Account newAccount;
         String accountType = "";
 
@@ -46,32 +54,60 @@ public class MainActivity extends AppCompatActivity {
             result.setText("INVALID EMAIL");
         }else if(!isPasswordValid(password)){
             result.setText("INVALID PASSWORD");
-        }else{
+        }else {
 
             //CHECK IF ADMIN CREDENTIALS
-            if (password.getText().toString().equals(ADMIN_PWD) && username.getText().toString().equals(ADMIN_USERNAME)){
-                newAccount = new Admin(username.getText().toString(), email.getText().toString(),password.getText().toString());
-                //accountType= "ADMIN";
-                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                startActivity(intent);
-            }
+            if (password.getText().toString().equals(ADMIN_PWD) && username.getText().toString().equals(ADMIN_USERNAME)) {
+                newAccount = new Admin(username.getText().toString(), email.getText().toString(), password.getText().toString());
+            } else if (isAClub.isChecked()) {
+                newAccount = new Club(username.getText().toString(), email.getText().toString(), password.getText().toString());
 
-            else if(isAClub.isChecked()){
-                newAccount = new Club(username.getText().toString(), email.getText().toString(),password.getText().toString());
-                //accountType = "CLUB";
-                Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
-                intent.putExtra("Username", newAccount.getUsername());
-                startActivity(intent);
-            }else{
+            } else {
                 newAccount = new User(username.getText().toString(), email.getText().toString(), password.getText().toString());
-                //accountType = "USER";
-                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-                intent.putExtra("Username", newAccount.getUsername());
-                startActivity(intent);
             }
 
-            UploadUser(newAccount);
+            DatabaseReference accountRef = FirebaseDatabase.getInstance().getReference(newAccount.getRoll());
+            accountRef.child(username.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if(task.isSuccessful()){
+                        if(task.getResult().exists()){
+                            result.setText("ACCOUNT ALREADY EXISTS");
+                        }else{
+                            success = true;
+
+                            Intent intent;
+
+                            switch(newAccount.getRoll()){
+                                case("admin"):
+                                    intent = new Intent(getApplicationContext(), AdminActivity.class);
+                                    break;
+                                case("clubs"):
+                                    intent = new Intent(getApplicationContext(), ClubActivity.class);
+                                    break;
+                                default:
+                                    intent = new Intent(getApplicationContext(), UserActivity.class);
+                                    break;
+
+                            }
+
+                            UploadUser(newAccount);
+                            intent.putExtra("Username", newAccount.getUsername());
+                            startActivity(intent);
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Check failed", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+            });
+
         }
+    }
+
+    public void to_Login_Click(View view){
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 
     public boolean isEmailValid(EditText email){
@@ -105,22 +141,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void UploadUser(Account account){
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        if(account.getRoll() == "CLUB"){
+
+        if(account.getRoll() == "clubs"){
             DatabaseReference newUserEmailRef = database.getReference("clubs/" + account.getUsername() + "/email");
             DatabaseReference newUserPasswordRef = database.getReference("clubs/" + account.getUsername() + "/password");
 
             newUserEmailRef.setValue(account.getEmail());
             newUserPasswordRef.setValue(account.getPassword());
 
-        }else if(account.getRoll() == "USER"){
+        }else if(account.getRoll() == "users"){
             DatabaseReference newUserEmailRef = database.getReference("users/" + account.getUsername() + "/email");
             DatabaseReference newUserPasswordRef = database.getReference("users/" + account.getUsername() + "/password");
 
             newUserEmailRef.setValue(account.getEmail());
             newUserPasswordRef.setValue(account.getPassword());
-        }else if(account.getRoll() == "ADMIN"){
+        }else if(account.getRoll() == "admin"){
             DatabaseReference newUserEmailRef = database.getReference("admin/" + account.getUsername() + "/email");
             DatabaseReference newUserPasswordRef = database.getReference("admin/" + account.getUsername() + "/password");
 

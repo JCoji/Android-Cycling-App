@@ -6,6 +6,6 @@ public class Club extends Account{
         this.email = email;
         this.password = password;
 
-        roll = "CLUB";
+        roll = "clubs";
     }
 }

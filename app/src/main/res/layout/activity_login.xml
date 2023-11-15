@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:gravity="center"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +39,7 @@
                 android:layout_weight="1"
                 android:fontFamily="serif"
                 android:gravity="center"
-                android:text="Regitser"
+                android:text="Login"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#192A51"
                 android:textStyle="bold" />
@@ -59,18 +57,6 @@
                 android:textSize="12sp" />
 
             <EditText
-                android:id="@+id/Register_Email"
-                style="@style/Widget.AppCompat.EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:fontFamily="serif"
-                android:hint="Email:"
-                android:inputType="textEmailAddress"
-                android:textSize="12sp" />
-
-            <EditText
                 android:id="@+id/Register_Password"
                 style="@style/Widget.AppCompat.EditText"
                 android:layout_width="match_parent"
@@ -82,30 +68,20 @@
                 android:inputType="textPassword"
                 android:textSize="12sp" />
 
-            <Switch
-                android:id="@+id/Club_Switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|right"
-                android:layout_weight="1"
-                android:fontFamily="serif"
-                android:text="Make Club Account?"
-                android:textSize="12sp" />
-
             <TextView
                 android:id="@+id/Go_To_Register_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Already Have an Account?" />
+                android:text="Don't Have an account yet?" />
 
             <Button
                 android:id="@+id/Register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="to_Login_Click"
-                android:text="Go To Login" />
+                android:onClick="Back_Click"
+                android:text="Back to Register" />
 
             <Space
                 android:layout_width="match_parent"
@@ -128,8 +104,8 @@
                 android:layout_weight="0.5"
                 android:backgroundTint="#192A51"
                 android:fontFamily="serif"
-                android:onClick="Register_Click"
-                android:text="Register"
+                android:onClick="Login_Click"
+                android:text="Login"
                 android:textColor="#F5E6E8"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -146,6 +122,4 @@
             android:layout_weight="1" />
 
     </LinearLayout>
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
