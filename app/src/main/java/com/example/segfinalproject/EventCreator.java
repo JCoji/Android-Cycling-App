@@ -1,5 +1,6 @@
 package com.example.segfinalproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,25 +34,41 @@ public class EventCreator extends AppCompatActivity {
         pace = (EditText) findViewById(R.id.Register_pace);
     }
 
-    public void confirmButtonOnClick(View view) {
-        Event newEvent;
 
-        if (!isTitleValid(title)) {
-            Toast.makeText(getApplicationContext(), "Event Title Invalid", Toast.LENGTH_LONG).show();
-        } else if (!isAgeValid(age)) {
-            Toast.makeText(getApplicationContext(), "Event Age Invalid", Toast.LENGTH_LONG).show();
-        } else if (!isLevelValid(level)) {
-            Toast.makeText(getApplicationContext(), "Event Level Invalid", Toast.LENGTH_LONG).show();
-        } else if (!isPaceValid(pace)) {
-            Toast.makeText(getApplicationContext(), "Event Pace Invalid", Toast.LENGTH_LONG).show();
-        } else {
-            newEvent = new Event(title.getText().toString(), Integer.parseInt(age.getText().toString()), level.getText().toString(), Integer.parseInt(pace.getText().toString()));
-            Intent intent = new Intent(getApplicationContext(), EventManager.class);
-            uploadEvent(newEvent);
-            startActivity(intent);
+    public void createButtonOnClick(View view){
+        DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("events");
 
-        }
+        eventsRef.child(title.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()){
+                    if(task.getResult().exists()){
+                        Toast.makeText(getApplicationContext(), "Event already exists", Toast.LENGTH_LONG).show();
+                    }else{
+                        if (!isTitleValid(title)) {
+                            Toast.makeText(getApplicationContext(), "Event Title Invalid", Toast.LENGTH_LONG).show();
+                        } else if (!isAgeValid(age)) {
+                            Toast.makeText(getApplicationContext(), "Event Age Invalid", Toast.LENGTH_LONG).show();
+                        } else if (!isLevelValid(level)) {
+                            Toast.makeText(getApplicationContext(), "Event Level Invalid", Toast.LENGTH_LONG).show();
+                        } else if (!isPaceValid(pace)) {
+                            Toast.makeText(getApplicationContext(), "Event Pace Invalid", Toast.LENGTH_LONG).show();
+                        } else {
+                            Event newEvent;
+
+                            newEvent = new Event(title.getText().toString(), Integer.parseInt(age.getText().toString()), level.getText().toString(), Integer.parseInt(pace.getText().toString()));
+                            Intent intent = new Intent(getApplicationContext(), EventManager.class);
+                            uploadEvent(newEvent);
+                            startActivity(intent);
+                        }
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Check failed", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
+
 
     public boolean isTitleValid(EditText title){
         String titleInput = title.getText().toString();

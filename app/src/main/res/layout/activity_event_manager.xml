@@ -35,7 +35,7 @@
                 android:layout_height="65dp"
                 android:backgroundTint="#192A51"
                 android:fontFamily="serif"
-                android:onClick="newEventButtonOnClick"
+                android:onClick="editEventButtonOnClick"
                 android:text="Edit Event" />
 
         </LinearLayout>

@@ -82,7 +82,7 @@
                 android:layout_height="75dp"
                 android:backgroundTint="#192A51"
                 android:fontFamily="serif"
-                android:onClick="confirmButtonOnClick"
+                android:onClick="createButtonOnClick"
                 android:text="Submit" />
 
             <Button

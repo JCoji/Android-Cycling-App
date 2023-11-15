@@ -62,24 +62,37 @@ public class EventManager extends AppCompatActivity {
                 for(DataSnapshot postSnapshot : snapshot.getChildren()) {
                     Event event;
 
-                    String level = "";
-                    int age = Integer.parseInt(postSnapshot.child("age").getValue().toString());
-                    level = postSnapshot.child("level").getValue().toString();
-                    int pace = Integer.parseInt(postSnapshot.child("pace").getValue().toString());
+                        //Temporary non-valid values while firebase updates
+                        int age = -1;
+                        String level = "";
+                        int pace = -1;
 
-                    event = new Event(postSnapshot.getKey(), age, level, pace);
-                    events.add(event);
+                        if(postSnapshot.child("age").getValue() != null){
+                            age = Integer.parseInt(postSnapshot.child("age").getValue().toString());
+                        }
 
+                        if(postSnapshot.child("level").getValue() != null){
+                            level = postSnapshot.child("level").getValue().toString();
+                        }
+
+                        if(postSnapshot.child("pace").getValue() != null){
+                            pace = Integer.parseInt(postSnapshot.child("pace").getValue().toString());
+                        }
+
+
+                        event = new Event(postSnapshot.getKey(), age, level, pace);
+                        events.add(event);
 
                 }
 
-                EventList eventAdapter = new EventList(EventManager.this, events);
-                listViewEvents.setAdapter(eventAdapter);
+                    EventList eventAdapter = new EventList(EventManager.this, events);
+                    listViewEvents.setAdapter(eventAdapter);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(EventManager.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
             }
         });
     }
