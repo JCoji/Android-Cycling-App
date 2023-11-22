@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.Register_Email);
         password = (EditText) findViewById(R.id.Register_Password);
         result = (EditText) findViewById(R.id.Result_Text);
+
+
     }
 
     public void Register_Click(View view){

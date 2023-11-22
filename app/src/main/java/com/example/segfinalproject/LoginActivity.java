@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void FindUser(int rollsIndex){
         int i = rollsIndex;
+        completed = false;
 
         DatabaseReference accountRef = FirebaseDatabase.getInstance().getReference(rolls[i]);
 
