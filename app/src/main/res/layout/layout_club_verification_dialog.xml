@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+        <EditText
+            android:id="@+id/user_phone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:layout_below="@id/user_full_name"/>
+
+
+        <EditText
+            android:id="@+id/user_social_media"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Social Media Link"
+            android:layout_below="@id/user_phone"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/user_full_name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+
+             />
+
+
+</RelativeLayout>

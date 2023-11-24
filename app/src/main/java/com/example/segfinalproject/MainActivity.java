@@ -151,9 +151,12 @@ public class MainActivity extends AppCompatActivity {
         if(account.getRoll() == "clubs"){
             DatabaseReference newUserEmailRef = database.getReference("clubs/" + account.getUsername() + "/email");
             DatabaseReference newUserPasswordRef = database.getReference("clubs/" + account.getUsername() + "/password");
+            DatabaseReference newUserUnverifiedRef = database.getReference("clubs/" + account.getUsername() + "/unverified");
+
 
             newUserEmailRef.setValue(account.getEmail());
             newUserPasswordRef.setValue(account.getPassword());
+            newUserUnverifiedRef.setValue(true);
 
         }else if(account.getRoll() == "users"){
             DatabaseReference newUserEmailRef = database.getReference("users/" + account.getUsername() + "/email");
