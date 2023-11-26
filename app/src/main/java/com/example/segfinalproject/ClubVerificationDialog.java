@@ -62,7 +62,7 @@ public class ClubVerificationDialog extends DialogFragment {
                         } else if (!(isLinkValid(link))) {
                             Toast.makeText(getContext(), "Link is invalid.", Toast.LENGTH_LONG).show();
                         } else {
-                            listener.storeTexts(phoneNum, name, link);
+                            listener.storeClub(phoneNum, name, link);
                             dialog.dismiss();
                         }
                     }
@@ -98,7 +98,7 @@ public class ClubVerificationDialog extends DialogFragment {
         }
     }
     public interface CVDialogListener{
-        void storeTexts(String phoneNum, String fullName, String socialLink);
+        void storeClub(String phoneNum, String fullName, String socialLink);
 
     }
 }

@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClubActivity extends AppCompatActivity implements ClubVerificationDialog.CVDialogListener {
+public class ClubActivity extends AppCompatActivity implements ClubVerificationDialog.CVDialogListener, ConfirmDeleteDialogFragment.CDDialogListener {
 
     String name;
     TextView clubname;
@@ -77,7 +77,12 @@ public class ClubActivity extends AppCompatActivity implements ClubVerificationD
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String eventName = eventNames.get(i);
-                deleteEvent(eventName);
+                Bundle args = new Bundle();
+                args.putString("username", eventName);
+                ConfirmDeleteDialogFragment dialog = new ConfirmDeleteDialogFragment();
+                dialog.setArguments(args);
+                dialog.show(getSupportFragmentManager(), "dialog");
+
                 return true;
             }
         });
@@ -119,7 +124,7 @@ public class ClubActivity extends AppCompatActivity implements ClubVerificationD
         });
     }
 
-    public void storeTexts(String phoneNum, String fullName, String socialLink) {
+    public void storeClub(String phoneNum, String fullName, String socialLink) {
         DatabaseReference dRPhone = FirebaseDatabase.getInstance().getReference("clubs/" + name + "/phoneNumber");
         DatabaseReference dRName = FirebaseDatabase.getInstance().getReference("clubs/" +  name + "/fullName");
         DatabaseReference dRLink = FirebaseDatabase.getInstance().getReference("clubs/" +  name + "/socialMedia");
@@ -139,6 +144,20 @@ public class ClubActivity extends AppCompatActivity implements ClubVerificationD
         startActivity(intent);
     }
 
+    public void membersOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), ClubMemberListActivity.class);
+        intent.putExtra("clubName", name);
+        startActivity(intent);
+    }
+
+    public void requestOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), ClubRequestManagerActivity.class);
+        intent.putExtra("clubName", name);
+        startActivity(intent);
+    }
+    public void remove(String name){
+        deleteEvent(name);
+    }
     private void deleteEvent(String title) {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("clubs/" + name + "/events").child(title);
         dR.removeValue();

@@ -28,6 +28,7 @@ public class ClubEventCreator extends AppCompatActivity {
     String selectedEventName;
     EditText memberNum;
     EditText eventName;
+    EditText eventFee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +38,17 @@ public class ClubEventCreator extends AppCompatActivity {
         eventSpinner = (Spinner) findViewById(R.id.EventTypeSpinner);
         memberNum = (EditText) findViewById(R.id.Max_mem_txt);
         eventName = (EditText) findViewById(R.id.name_txt);
+        eventFee = (EditText) findViewById(R.id.fee_txt);
 
         //Stores name of club, passed from prev. activity
         Bundle extras = getIntent().getExtras();
         clubName = extras.getString("ClubName");
     }
 
-    public void BackButtonOnClick(View view) {
+    public void backButtonOnClick(View view) {
+        Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
+        intent.putExtra("Username", extras.getString("ClubName"));
         startActivity(intent);
     }
 
@@ -118,13 +122,58 @@ public class ClubEventCreator extends AppCompatActivity {
         });
     }
 
-    public void SubmitOnClick(View view){
+    public void submitOnClick(View view){
         selectedEventName = eventSpinner.getSelectedItem().toString();
         storeSelectedSpinnerValue();
 
-        ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()));
-        uploadClubEvent(newCE);
+        if (!(isTitleValid(eventName))) {
+            Toast.makeText(getApplicationContext(), "Event Title Invalid", Toast.LENGTH_LONG).show();
+        } else if (!(isLimitValid(memberNum))) {
+            Toast.makeText(getApplicationContext(), "Participant Limit Invalid", Toast.LENGTH_LONG).show();
+        } else if (!(isFeeValid(eventFee))) {
+            Toast.makeText(getApplicationContext(), "Event Fee Invalid", Toast.LENGTH_LONG).show();
+        } else {
+            ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()));
+            uploadClubEvent(newCE);
 
+            Bundle extras = getIntent().getExtras();
+            Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
+            intent.putExtra("Username", extras.getString("ClubName"));
+            startActivity(intent);
+        }
+    }
+    private boolean isTitleValid(EditText title) {
+        String titleInput = title.getText().toString();
+
+        return !(titleInput.isEmpty());
+    }
+
+    private boolean isFeeValid(EditText fee){
+        String feeInput = fee.getText().toString();
+
+        //Checks if the fee input is an integer
+        try {
+            int feeInt = Integer.parseInt(feeInput);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        //Checks if the EditText contains anything
+        return !(feeInput.isEmpty());
+    }
+
+    private boolean isLimitValid(EditText limit){
+        String limitInput = limit.getText().toString();
+
+        //Checks if the limit input is an integer
+        try {
+            int limitInt = Integer.parseInt(limitInput);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        //Checks if the EditText contains anything
+        return !(limitInput.isEmpty());
     }
 
     private void uploadClubEvent(ClubEvent event) {

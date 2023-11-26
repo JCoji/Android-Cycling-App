@@ -13,6 +13,12 @@
         android:theme="@style/Theme.SEGFINALPROJECT"
         tools:targetApi="31">
         <activity
+            android:name=".ClubRequestManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ClubMemberListActivity"
+            android:exported="false" />
+        <activity
             android:name=".ClubEventCreator"
             android:exported="false" />
         <activity

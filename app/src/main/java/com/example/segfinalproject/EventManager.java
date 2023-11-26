@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventManager extends AppCompatActivity {
+public class EventManager extends AppCompatActivity implements ConfirmDeleteDialogFragment.CDDialogListener {
 
     ListView listViewEvents;
     List<Event> events;
@@ -43,7 +43,12 @@ public class EventManager extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Event event = events.get(i);
-                deleteEvent(event.getTitle());
+                Bundle args = new Bundle();
+                args.putString("name", event.getTitle());
+                ConfirmDeleteDialogFragment dialog = new ConfirmDeleteDialogFragment();
+                dialog.setArguments(args);
+                dialog.show(getSupportFragmentManager(), "dialog");
+
                 return true;
             }
         });
@@ -95,6 +100,10 @@ public class EventManager extends AppCompatActivity {
                 Toast.makeText(EventManager.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void remove(String title) {
+        deleteEvent(title);
     }
 
     private void deleteEvent(String title) {

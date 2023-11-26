@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClubManager extends AppCompatActivity {
+public class ClubManager extends AppCompatActivity implements ConfirmDeleteDialogFragment.CDDialogListener {
 
     ListView listViewClubs;
     List<Club> clubs;
@@ -43,7 +43,12 @@ public class ClubManager extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Club club = clubs.get(i);
-                deleteClub(club.getUsername());
+                Bundle args = new Bundle();
+                args.putString("name", club.getUsername());
+                ConfirmDeleteDialogFragment dialog = new ConfirmDeleteDialogFragment();
+                dialog.setArguments(args);
+                dialog.show(getSupportFragmentManager(), "dialog");
+
                 return true;
             }
         });
@@ -80,6 +85,9 @@ public class ClubManager extends AppCompatActivity {
 
     }
 
+    public void remove(String title) {
+        deleteClub(title);
+    }
     private void deleteClub(String userName) {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("clubs").child(userName);
         dR.removeValue();
