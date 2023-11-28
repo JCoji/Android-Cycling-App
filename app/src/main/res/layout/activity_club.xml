@@ -37,7 +37,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="345dp"
@@ -63,41 +63,50 @@
             <ListView
                 android:id="@+id/CEventsList"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="270dp"
                 android:layout_weight="2.5">
 
             </ListView>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal"
-                android:layout_weight="10">
+                android:layout_height="38dp"
+                android:layout_weight="10"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/make_event_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="newClubEventButtonOnClick"
-                    android:text="Make new Event"
-                    android:layout_weight="1"/>
+                    android:text="Make new Event" />
 
                 <Button
                     android:id="@+id/view_requests_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Join Requests"
+                    android:layout_weight="1"
                     android:onClick="requestOnClick"
-                    android:layout_weight="1"/>
+                    android:text="Join Requests" />
 
                 <Button
                     android:id="@+id/view_members_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Current Members"
+                    android:layout_weight="1"
                     android:onClick="membersOnClick"
-                    android:layout_weight="1"/>
+                    android:text="Current Members" />
+
             </LinearLayout>
+
+            <Button
+                android:id="@+id/Edit_Event_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:onClick="editClubEventButtonOnClick"
+                android:text="Edit Events" />
 
         </LinearLayout>
     </LinearLayout>

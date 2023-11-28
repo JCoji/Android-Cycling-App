@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ public class ConfirmDeleteDialogFragment extends DialogFragment {
         String finalUsername = username.substring(start, end);
 
         TextView message = view.findViewById(R.id.dialog_text);
-        message.setText("Are you sure you want to delete " + finalUsername);
+        message.setText("What do you want to do with " + finalUsername + ":");
 
         builder.setView(view)
                 .setPositiveButton("Remove", new DialogInterface.OnClickListener() {
@@ -47,7 +48,8 @@ public class ConfirmDeleteDialogFragment extends DialogFragment {
                         listener.remove(finalUsername);
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {}
                 });

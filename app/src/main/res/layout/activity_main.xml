@@ -41,7 +41,7 @@
                 android:layout_weight="1"
                 android:fontFamily="serif"
                 android:gravity="center"
-                android:text="Regitser"
+                android:text="Register"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#192A51"
                 android:textStyle="bold" />

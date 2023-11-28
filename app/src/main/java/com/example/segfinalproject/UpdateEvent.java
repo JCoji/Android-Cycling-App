@@ -28,8 +28,8 @@ public class UpdateEvent extends AppCompatActivity {
         setContentView(R.layout.activity_update_event);
 
         title = (EditText) findViewById(R.id.Register_title);
-        age = (EditText) findViewById(R.id.Register_age);
-        level = (EditText) findViewById(R.id.Register_level);
+        age = (EditText) findViewById(R.id.EventSize);
+        level = (EditText) findViewById(R.id.EventFee);
         pace = (EditText) findViewById(R.id.Register_pace);
     }
 
