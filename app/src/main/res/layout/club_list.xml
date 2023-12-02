@@ -14,14 +14,18 @@
             android:id="@+id/ClubName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text=""
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/ClubEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+            android:fontFamily="serif"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

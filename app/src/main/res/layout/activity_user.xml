@@ -4,21 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BC6C25"
     tools:context=".UserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#192A51"
+        android:background="@drawable/activity_user_page"
         android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="345dp"
-            android:layout_height="75dp"
-            android:layout_gravity="center"
-            android:background="@drawable/activity_main_border"
+            android:layout_width="380dp"
+            android:layout_height="650dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -29,29 +26,20 @@
                 android:fontFamily="serif"
                 android:text="WELCOME USER"
                 android:textAlignment="center"
-                android:textColor="#192A51"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="30dp"
                 android:textStyle="bold" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-
-        <LinearLayout
-            android:layout_width="345dp"
-            android:layout_height="290dp"
-            android:background="@drawable/activity_main_border"
-            android:gravity="center"
-            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/userText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
                 android:ems="10"
-                android:gravity="center_horizontal"
-                android:inputType="text" />
+                android:gravity="center|center_horizontal"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -11,31 +11,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#192A51"
+        android:background="@drawable/register_page"
         android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <LinearLayout
-            android:layout_width="350dp"
-            android:layout_height="550dp"
+            android:layout_width="380dp"
+            android:layout_height="650dp"
             android:layout_gravity="center|center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/activity_main_border"
             android:gravity="center"
             android:orientation="vertical">
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="30dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
@@ -43,8 +37,20 @@
                 android:gravity="center"
                 android:text="Register"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textColor="#192A51"
-                android:textStyle="bold" />
+                android:textColor="@color/white"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Join us now."
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/Register_Username"
@@ -52,10 +58,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Username"
+                android:hint="Username:"
                 android:inputType="text"
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF"
                 android:textSize="12sp" />
 
             <EditText
@@ -64,11 +73,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="Email:"
                 android:inputType="textEmailAddress"
-                android:textSize="12sp" />
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF"
+                android:textSize="12sp"/>
 
             <EditText
                 android:id="@+id/Register_Password"
@@ -76,11 +88,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="Password:"
                 android:inputType="textPassword"
-                android:textSize="12sp" />
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF"
+                android:textSize="12sp"/>
 
             <Switch
                 android:id="@+id/Club_Switch"
@@ -90,60 +105,67 @@
                 android:layout_weight="1"
                 android:fontFamily="serif"
                 android:text="Make Club Account?"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/Go_To_Register_txt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Already Have an Account?" />
-
             <Button
-                android:id="@+id/Register_btn"
-                android:layout_width="match_parent"
+                android:id="@+id/Submit_Login_btn"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="to_Login_Click"
-                android:text="Go To Login" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_weight="1" />
+                android:layout_weight="0.5"
+                android:background="@android:color/transparent"
+                android:fontFamily="serif"
+                android:onClick="Register_Click"
+                android:text="ENTER"
+                android:textColor="#F5E6E8"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/Result_Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:ems="10"
-                android:inputType="text" />
-
-            <Button
-                android:id="@+id/Submit_Login_btn"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="325dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:backgroundTint="#192A51"
                 android:fontFamily="serif"
-                android:onClick="Register_Click"
-                android:text="Register"
-                android:textColor="#F5E6E8"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:layout_weight="1" />
-        </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            <TextView
+                android:id="@+id/Go_To_Register_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:gravity="bottom|center"
+                android:text="Already have an account?"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/Register_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="5dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:fontFamily="serif"
+                android:gravity="center|top"
+                android:onClick="to_Login_Click"
+                android:text="Click here to go to login"
+                android:textSize="14sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

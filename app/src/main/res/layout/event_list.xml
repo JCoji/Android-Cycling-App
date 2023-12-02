@@ -15,29 +15,37 @@
             android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text=""
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/Age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text=""
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/Level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text=""
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/Pace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text=""
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

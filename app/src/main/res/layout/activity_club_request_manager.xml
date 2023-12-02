@@ -9,18 +9,58 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/club_request_manager_page"
+        android:gravity="center"
         android:orientation="vertical">
-        <Button
-            android:id="@+id/btn_Cancel"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#192A51"
-            android:fontFamily="serif"
-            android:onClick="backButtonOnClick"
-            android:text="Back" />
-        <ListView
-            android:id="@+id/userList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="380dp"
+            android:layout_height="650dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Manage Requests"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <ListView
+                android:id="@+id/userList"
+                android:layout_width="345dp"
+                android:layout_height="490dp"
+                android:background="@drawable/activity_main_border">
+
+            </ListView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/btn_Cancel"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#65FFFFFF"
+                android:fontFamily="serif"
+                android:onClick="backButtonOnClick"
+                android:text="Return"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,10 @@
             android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text=""
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
