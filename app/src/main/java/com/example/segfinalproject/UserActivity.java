@@ -2,7 +2,9 @@ package com.example.segfinalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 public class UserActivity extends AppCompatActivity {
@@ -21,4 +23,10 @@ public class UserActivity extends AppCompatActivity {
 
         username.setText("Welcome: " + extras.getString("Username"));
     }
+
+    public void toSearchBtnOnClick(View view){
+        Intent intent = new Intent(getApplicationContext(), UserSearch.class);
+        startActivity(intent);
+    }
+
 }

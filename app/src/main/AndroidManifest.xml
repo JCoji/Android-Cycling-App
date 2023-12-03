@@ -13,6 +13,12 @@
         android:theme="@style/Theme.SEGFINALPROJECT"
         tools:targetApi="31">
         <activity
+            android:name=".UserEventView"
+            android:exported="false" />
+        <activity
+            android:name=".UserSearch"
+            android:exported="false" />
+        <activity
             android:name=".ClubEventEditor"
             android:exported="false" />
         <activity

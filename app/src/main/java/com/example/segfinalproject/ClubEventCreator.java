@@ -133,7 +133,7 @@ public class ClubEventCreator extends AppCompatActivity {
         } else if (!(isFeeValid(eventFee))) {
             Toast.makeText(getApplicationContext(), "Event Fee Invalid", Toast.LENGTH_LONG).show();
         } else {
-            ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()));
+            ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()), clubName);
             uploadClubEvent(newCE);
 
             Bundle extras = getIntent().getExtras();
@@ -181,8 +181,10 @@ public class ClubEventCreator extends AppCompatActivity {
 
         DatabaseReference newEventTypeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/type");
         DatabaseReference newEventSizeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/size");
+        DatabaseReference newEventCNameRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/Club Name");
 
         newEventTypeRef.setValue(selectedEventName);
         newEventSizeRef .setValue(event.getSize());
+        newEventCNameRef.setValue(clubName);
     }
 }

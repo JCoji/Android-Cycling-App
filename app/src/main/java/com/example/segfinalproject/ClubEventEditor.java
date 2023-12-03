@@ -142,7 +142,7 @@ public class ClubEventEditor extends AppCompatActivity {
                         } else if (!isLimitValid(memberNum)) {
                             Toast.makeText(getApplicationContext(), "Event Level Invalid", Toast.LENGTH_LONG).show();
                         } else {
-                            ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()));
+                            ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()), clubName);
                             //DatabaseReference dR = FirebaseDatabase.getInstance().getReference("clubs").child(clubName).child("events").child(eventName.getText().toString());
                             uploadClubEvent(newCE);
                             Toast.makeText(getApplicationContext(), "Event Updated", Toast.LENGTH_LONG).show();
@@ -190,8 +190,11 @@ public class ClubEventEditor extends AppCompatActivity {
 
         DatabaseReference newEventTypeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/type");
         DatabaseReference newEventSizeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/size");
+        DatabaseReference newEventCNameRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/Club Name");
 
         newEventTypeRef.setValue(selectedEventName);
-        newEventSizeRef .setValue(event.getSize());
+        newEventSizeRef.setValue(event.getSize());
+
+        newEventCNameRef.setValue(clubName);
     }
 }

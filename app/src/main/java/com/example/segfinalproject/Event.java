@@ -5,6 +5,7 @@ public class Event {
     int age;
     String level;
     int pace;
+
     //Event requires a name/title, a minimum age for participating, a level (easy,medium,hard) and a pace.
     Event(String title, int age, String level, int pace){
         this.title = title;

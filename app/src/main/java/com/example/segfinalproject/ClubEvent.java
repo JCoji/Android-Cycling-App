@@ -9,10 +9,13 @@ public class ClubEvent {
     String name;
     int maxMembers;
 
-    public ClubEvent(Event eventType, String name,int maxMembers){
+    String clubName;
+
+    public ClubEvent(Event eventType, String name,int maxMembers, String clubName){
         this.eventType = eventType;
         this.name = name;
         this.maxMembers = maxMembers;
+        this.clubName = clubName;
         participants = new ArrayList<User>();
     }
 
@@ -28,6 +31,10 @@ public class ClubEvent {
         return maxMembers;
     }
 
+    public String getClubName(){
+        return clubName;
+    }
+
     public ArrayList<User> getParticipants(){
         return participants;
     }
@@ -39,6 +46,10 @@ public class ClubEvent {
         }else{
             return false;
         }
+    }
+
+    public String toString(){
+        return name;
     }
 
 
