@@ -2,13 +2,17 @@ package com.example.segfinalproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ClubEventEditor extends AppCompatActivity {
@@ -32,6 +37,11 @@ public class ClubEventEditor extends AppCompatActivity {
     EditText memberNum;
     EditText eventName;
     EditText eventFee;
+    Button setTimeButton;
+    Button setDateButton;
+
+    int[] date = new int[3];
+    int[] time = new int[2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,8 @@ public class ClubEventEditor extends AppCompatActivity {
         memberNum = (EditText) findViewById(R.id.Max_mem_txt);
         eventName = (EditText) findViewById(R.id.name_txt);
         eventFee = (EditText) findViewById(R.id.fee_txt);
+        setTimeButton = (Button) findViewById(R.id.set_time_btn);
+        setDateButton = (Button) findViewById(R.id.set_date_btn);
 
         //Stores name of club, passed from prev. activity
         Bundle extras = getIntent().getExtras();
@@ -64,7 +76,7 @@ public class ClubEventEditor extends AppCompatActivity {
         fDatabaseRoot.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Is better to use a List, because you don't know the size
+                // It's better to use a List because you don't know the size
                 // of the iterator returned by dataSnapshot.getChildren() to
                 // initialize the array
                 final List<String> eventTypeNames = new ArrayList<String>();
@@ -126,6 +138,24 @@ public class ClubEventEditor extends AppCompatActivity {
         });
     }
 
+    public void setTimeBtnOnClick(View view) {
+        DialogFragment timePicker = new TimePickerFragment();
+        timePicker.show(getSupportFragmentManager(), "Time Picker");
+    }
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        this.time[0] = hourOfDay;
+        this.time[1] = minute;
+    }
+    public void setDateBtnOnClick(View view) {
+        DialogFragment datePicker = new DatePickerFragment();
+        datePicker.show(getSupportFragmentManager(), "Date Picker");
+    }
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        this.date[0] = year;
+        this.date[1] = month;
+        this.date[2] = dayOfMonth;
+    }
+
     public void updateButtonOnClick(View view){
         DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("clubs");
 
@@ -140,9 +170,13 @@ public class ClubEventEditor extends AppCompatActivity {
                         if (!isFeeValid(eventFee)){
                             Toast.makeText(getApplicationContext(), "Event Age Invalid", Toast.LENGTH_LONG).show();
                         } else if (!isLimitValid(memberNum)) {
-                            Toast.makeText(getApplicationContext(), "Event Level Invalid", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Participant Limit Invalid", Toast.LENGTH_LONG).show();
+                        } else if (!(isFeeValid(eventFee))) {
+                            Toast.makeText(getApplicationContext(), "Event Fee Invalid", Toast.LENGTH_LONG).show();
+                        } else if (!(isDateValid(date))) {
+                            Toast.makeText(getApplicationContext(), "Event Date Invalid", Toast.LENGTH_LONG).show();
                         } else {
-                            ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()), clubName);
+                            ClubEvent newCE = new ClubEvent(selectedEventType, eventName.getText().toString(), Integer.parseInt(memberNum.getText().toString()), clubName, Integer.parseInt(eventFee.getText().toString()));
                             //DatabaseReference dR = FirebaseDatabase.getInstance().getReference("clubs").child(clubName).child("events").child(eventName.getText().toString());
                             uploadClubEvent(newCE);
                             Toast.makeText(getApplicationContext(), "Event Updated", Toast.LENGTH_LONG).show();
@@ -184,17 +218,31 @@ public class ClubEventEditor extends AppCompatActivity {
         //Checks if the EditText contains anything
         return !(limitInput.isEmpty());
     }
+    private boolean isDateValid(int[] arr) {
+        Calendar c = Calendar.getInstance();
+        int y = c.get(Calendar.YEAR);
+        int m = c.get(Calendar.MONTH);
+        int d = c.get(Calendar.DAY_OF_MONTH);
+        int easyDateCurr = (y * m) + d;
+        //Checks if the date entered is in the future
+        return (easyDateCurr < ((arr[0] * arr[1]) + arr[2]));
+    }
 
     private void uploadClubEvent(ClubEvent event) {
         FirebaseDatabase dbRef = FirebaseDatabase.getInstance();
 
         DatabaseReference newEventTypeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/type");
-        DatabaseReference newEventSizeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/size");
+        DatabaseReference newEventSizeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/limit");
+        DatabaseReference newEventDateRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/date");
+        DatabaseReference newEventTimeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/time");
+        DatabaseReference newEventFeeRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/fee");
         DatabaseReference newEventCNameRef = dbRef.getReference("clubs/" + clubName +  "/events/" + event.getName() + "/Club Name");
 
         newEventTypeRef.setValue(selectedEventName);
-        newEventSizeRef.setValue(event.getSize());
-
+        newEventSizeRef .setValue(event.getSize());
         newEventCNameRef.setValue(clubName);
+        newEventDateRef.setValue(event.getDate());
+        newEventTimeRef.setValue(event.getTime());
+        newEventFeeRef.setValue(event.getFee());
     }
 }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SEGFINALPROJECT"
         tools:targetApi="31">
         <activity
+            android:name=".ConfirmJoinDialogFragment"
+            android:exported="false" />
+        <activity
             android:name=".UserEventView"
             android:exported="false" />
         <activity

@@ -56,9 +56,7 @@ public class ClubActivity extends AppCompatActivity implements ClubVerificationD
                 if(unverified) {
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
 
-                        Log.i("teejee", postSnapshot.getKey());
                         if (postSnapshot.getKey().equals("unverified")) {
-                            Log.i("teejee", "I'm in");
                             ClubVerificationDialog dialog = new ClubVerificationDialog();
                             dialog.show(getSupportFragmentManager(), "Verification Dialog");
                             unverified = false;
@@ -87,8 +85,6 @@ public class ClubActivity extends AppCompatActivity implements ClubVerificationD
             }
         });
     }
-
-
 
     protected void onStart() {
         super.onStart();

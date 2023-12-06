@@ -25,7 +25,9 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void toSearchBtnOnClick(View view){
+        Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(getApplicationContext(), UserSearch.class);
+        intent.putExtra("Username", extras.getString("Username"));
         startActivity(intent);
     }
 

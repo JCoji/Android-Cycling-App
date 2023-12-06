@@ -103,6 +103,20 @@
                 android:textColorHint="@color/white"
                 android:textSize="12sp" />
 
+            <Button
+                android:id="@+id/set_date_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set Date"
+                android:onClick="setDateBtnOnClick"/>
+
+            <Button
+                android:id="@+id/set_time_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set Time"
+                android:onClick="setTimeBtnOnClick" />
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="60dp" />

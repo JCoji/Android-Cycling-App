@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserEventView extends ArrayAdapter<ClubEvent> implements Filterable{
+public class UserEventView extends ArrayAdapter<ClubEvent>{
 
     private Activity context;
 

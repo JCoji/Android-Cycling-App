@@ -23,4 +23,11 @@ public abstract class Account {
     public String getRoll(){
         return roll;
     }
+    public boolean equals(Account other) {
+        if (this.username.equals(other.getUsername())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
