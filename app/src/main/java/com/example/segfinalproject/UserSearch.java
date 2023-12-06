@@ -163,10 +163,13 @@ public class UserSearch extends AppCompatActivity implements ConfirmJoinDialogFr
         DatabaseReference dRUserJoinedClub = FirebaseDatabase.getInstance().getReference("users/" + extras.get("Username") + "/Clubs/" + clubName);
         DatabaseReference dRUser = FirebaseDatabase.getInstance().getReference("users/" + extras.get("Username")  + "/Clubs/" + clubName + "/Events/" + eventName);
         DatabaseReference dREvent = FirebaseDatabase.getInstance().getReference("clubs/" + clubName + "/events/" + eventName + "/registrees/" + extras.get("Username"));
+        DatabaseReference dRmem = FirebaseDatabase.getInstance().getReference("clubs/" + clubName + "/total members/member");
+
 
         dRUserJoinedClub.setValue(clubName);
         dRUser.setValue(eventName);
         dREvent.setValue(extras.get("Username"));
+        dRmem.setValue(extras.get("Username"));
     }
 
     public void backBtnOnClick(View view) {

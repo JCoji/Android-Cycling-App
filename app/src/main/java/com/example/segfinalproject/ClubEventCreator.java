@@ -80,7 +80,7 @@ public class ClubEventCreator extends AppCompatActivity implements DatePickerDia
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Is better to use a List, because you don't know the size
                 // of the iterator returned by dataSnapshot.getChildren() to
-                // initialize the array
+                // initialize the arrayS
                 final List<String> eventTypeNames = new ArrayList<String>();
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {

@@ -46,7 +46,7 @@ public class ClubMemberListActivity extends AppCompatActivity implements Confirm
 
         users = new ArrayList<>();
 
-        databaseUsers = FirebaseDatabase.getInstance().getReference("clubs/" + clubName + "/members");
+        databaseUsers = FirebaseDatabase.getInstance().getReference("clubs/" + clubName + "/total members");
 
         listViewUsers.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -75,15 +75,15 @@ public class ClubMemberListActivity extends AppCompatActivity implements Confirm
                     User user;
 
                     //Temporary non-valid values while firebase updates
-                    String email = "";
+                    String userName = "";
 
-
-                    if(postSnapshot.child("email").getValue() != null){
-                        email = postSnapshot.child("email").getValue().toString();
+                    if(postSnapshot.child("").getValue() != null){
+                        userName = postSnapshot.getValue().toString();
                     }
 
 
-                    user = new User(postSnapshot.getKey(), email, "");
+
+                    user = new User(userName, "", "");
                     users.add(user);
 
                 }
