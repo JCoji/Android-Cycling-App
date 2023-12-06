@@ -31,4 +31,11 @@ public class UserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toRateBtnOnClick(View view){
+        Bundle extras = getIntent().getExtras();
+        Intent intent = new Intent(getApplicationContext(), rating_activity.class);
+        intent.putExtra("Username", extras.getString("Username"));
+        startActivity(intent);
+    }
+
 }

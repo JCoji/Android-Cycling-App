@@ -47,6 +47,13 @@
                 android:layout_height="wrap_content"
                 android:onClick="toSearchBtnOnClick"
                 android:text="Go to Search" />
+
+            <Button
+                android:id="@+id/rating_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toRateBtnOnClick"
+                android:text="Rate a Club" />
         </LinearLayout>
 
     </LinearLayout>
