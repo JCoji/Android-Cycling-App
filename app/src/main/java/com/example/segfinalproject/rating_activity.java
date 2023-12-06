@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,16 +21,21 @@ import java.util.List;
 
 public class rating_activity extends AppCompatActivity {
 
-    Spinner eventSpinner;
-    String username;
+    Spinner clubSpinner;
+    EditText scoreText, descText;
+    String username, score, desc, club;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        eventSpinner = (Spinner) findViewById(R.id.rateClubSpinner);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
+
+        clubSpinner = (Spinner) findViewById(R.id.rateClubSpinner);
+
+        scoreText = (EditText) findViewById(R.id.score_editText);
+        descText = (EditText) findViewById(R.id.decription_editText);
+
 
         //Storing username from user activity page.
         Bundle extras = getIntent().getExtras();
@@ -57,10 +64,10 @@ public class rating_activity extends AppCompatActivity {
                     }
                 }
 
-                Spinner spinnerProperty = (Spinner) findViewById(R.id.rateClubSpinner);
+                clubSpinner = (Spinner) findViewById(R.id.rateClubSpinner);
                 ArrayAdapter<String> addressAdapter = new ArrayAdapter<String>(rating_activity.this, android.R.layout.simple_spinner_item, eventTypeNames);
                 addressAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerProperty.setAdapter(addressAdapter);
+                clubSpinner.setAdapter(addressAdapter);
             }
 
             @Override
@@ -68,5 +75,45 @@ public class rating_activity extends AppCompatActivity {
 
             }
         });
+    }
+
+    //Check if the received score is in between 1 and 5.
+    public Boolean correctScore(int score){
+        if (score <= 5 && score >= 1){
+            return true;
+        }
+        return false;
+    }
+
+    //Check if there is a description.
+    public Boolean correctDesc(String desc){
+        if (desc != null){
+            return true;
+        }
+        return false;
+    }
+
+    public void submitBtnOnClick(View view) {
+        club = clubSpinner.getSelectedItem().toString();
+        score = scoreText.getText().toString();
+        desc = descText.getText().toString();
+
+        if (score.isEmpty() || Integer.parseInt(score) > 5 || Integer.parseInt(score) < 1){//Invalid score
+            Toast.makeText(rating_activity.this, "INVALID SCORE", Toast.LENGTH_SHORT).show();
+        }
+        else if (desc.isEmpty()){//Missing description
+            Toast.makeText(rating_activity.this, "MISSING DESCRIPTION", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            FirebaseDatabase dbRef = FirebaseDatabase.getInstance();
+
+            DatabaseReference newRatingName = dbRef.getReference("clubs/" +  club +  "/ratings/" + username);
+            DatabaseReference newRatingScore = dbRef.getReference("clubs/" +  club +  "/ratings/" + username + "/scores/");
+            DatabaseReference newRatingDesc = dbRef.getReference("clubs/" +  club +  "/ratings/" + username + "/descriptions/");
+
+            newRatingName.setValue(username);
+            newRatingScore.setValue(score);
+            newRatingDesc.setValue(desc);
+        }
     }
 }
