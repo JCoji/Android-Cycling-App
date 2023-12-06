@@ -95,7 +95,7 @@
             <LinearLayout
                 android:layout_width="345dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -129,6 +129,12 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/view_ratings_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Ratings" />
 
             <TextView
                 android:id="@+id/textView8"

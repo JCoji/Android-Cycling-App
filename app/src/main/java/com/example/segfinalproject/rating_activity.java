@@ -116,4 +116,11 @@ public class rating_activity extends AppCompatActivity {
             newRatingDesc.setValue(desc);
         }
     }
+
+    public void returnBtnOnClick(View view) {
+        Bundle extras = getIntent().getExtras();
+        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+        intent.putExtra("Username", extras.getString("Username"));
+        startActivity(intent);
+    }
 }

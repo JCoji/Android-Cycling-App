@@ -21,7 +21,7 @@ public class UserActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.userText);
 
-        username.setText("Welcome: " + extras.getString("Username"));
+        username.setText(extras.getString("Username"));
     }
 
     public void toSearchBtnOnClick(View view){
