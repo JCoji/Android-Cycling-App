@@ -160,9 +160,11 @@ public class UserSearch extends AppCompatActivity implements ConfirmJoinDialogFr
 
     public void join(String eventName, String clubName) {
         Bundle extras = getIntent().getExtras();
-        DatabaseReference dRUser = FirebaseDatabase.getInstance().getReference("users/" + extras.get("Username") + "/Events/" + eventName);
+        DatabaseReference dRUserJoinedClub = FirebaseDatabase.getInstance().getReference("users/" + extras.get("Username") + "/Clubs/" + clubName);
+        DatabaseReference dRUser = FirebaseDatabase.getInstance().getReference("users/" + extras.get("Username")  + "/Clubs/" + clubName + "/Events/" + eventName);
         DatabaseReference dREvent = FirebaseDatabase.getInstance().getReference("clubs/" + clubName + "/events/" + eventName + "/registrees/" + extras.get("Username"));
 
+        dRUserJoinedClub.setValue(clubName);
         dRUser.setValue(eventName);
         dREvent.setValue(extras.get("Username"));
     }
