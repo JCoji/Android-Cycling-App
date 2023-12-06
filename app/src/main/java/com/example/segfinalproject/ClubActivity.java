@@ -154,6 +154,12 @@ public class ClubActivity extends AppCompatActivity implements ClubVerificationD
         startActivity(intent);
     }
 
+    public void ratingOnClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), ClubViewRatings.class);
+        intent.putExtra("clubName", name);
+        startActivity(intent);
+    }
+
     public void requestOnClick(View view) {
         Intent intent = new Intent(getApplicationContext(), ClubRequestManagerActivity.class);
         intent.putExtra("clubName", name);

@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClubViewRatings extends AppCompatActivity {
@@ -25,20 +26,26 @@ public class ClubViewRatings extends AppCompatActivity {
     DatabaseReference databaseRatings;
     RatingView ratingAdapter;
 
+    String clubname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_view_ratings);
 
         listViewRatings = (ListView) findViewById(R.id.ratings);
+        ratings = new ArrayList<>();
 
-        databaseRatings = FirebaseDatabase.getInstance().getReference("clubs/ratings/");
+        Bundle extras = getIntent().getExtras();
+        clubname = extras.getString("clubName");
+
+        databaseRatings = FirebaseDatabase.getInstance().getReference("clubs/" + clubname + "/ratings/" );
     }
 
     public void backButtonOnClick(View view) {
         Bundle extras = getIntent().getExtras();
         Intent intent = new Intent(getApplicationContext(), ClubActivity.class);
-        intent.putExtra("Username", extras.getString("ClubName"));
+        intent.putExtra("Username", clubname);
         startActivity(intent);
     }
 
