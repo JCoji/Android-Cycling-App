@@ -78,16 +78,20 @@ public class rating_activity extends AppCompatActivity {
     }
 
     //Check if the received score is in between 1 and 5.
-    public Boolean correctScore(int score){
-        if (score <= 5 && score >= 1){
-            return true;
+    public Boolean correctScore(String score){
+        int scoreNum = Integer.parseInt(score);
+
+        if (scoreNum <= 5 && scoreNum >= 1){//Score is in between 1 and 5
+            if (!score.isEmpty()){//Score is not null
+                return true;
+            }
         }
         return false;
     }
 
     //Check if there is a description.
     public Boolean correctDesc(String desc){
-        if (desc != null){
+        if (!desc.isEmpty()){
             return true;
         }
         return false;
@@ -98,10 +102,10 @@ public class rating_activity extends AppCompatActivity {
         score = scoreText.getText().toString();
         desc = descText.getText().toString();
 
-        if (score.isEmpty() || Integer.parseInt(score) > 5 || Integer.parseInt(score) < 1){//Invalid score
+        if (correctScore(score)){//Invalid score
             Toast.makeText(rating_activity.this, "INVALID SCORE", Toast.LENGTH_SHORT).show();
         }
-        else if (desc.isEmpty()){//Missing description
+        else if (correctDesc(desc)){//Missing description
             Toast.makeText(rating_activity.this, "MISSING DESCRIPTION", Toast.LENGTH_SHORT).show();
         }
         else{

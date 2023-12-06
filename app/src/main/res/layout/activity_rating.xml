@@ -27,16 +27,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Enter Score 1-5" />
+            android:hint="Enter Score 1-5"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/decription_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Enter Description" />
+            android:hint="Enter Description"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/submit_rating"
