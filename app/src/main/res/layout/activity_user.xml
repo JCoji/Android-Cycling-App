@@ -41,19 +41,35 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
             <Button
                 android:id="@+id/search_btn"
-                android:layout_width="match_parent"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#65FFFFFF"
+                android:fontFamily="serif"
                 android:onClick="toSearchBtnOnClick"
-                android:text="Go to Search" />
+                android:text="Go to Search"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
             <Button
                 android:id="@+id/rating_button"
-                android:layout_width="match_parent"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#65FFFFFF"
+                android:fontFamily="serif"
                 android:onClick="toRateBtnOnClick"
-                android:text="Rate a Club" />
+                android:text="Rate a Club"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>

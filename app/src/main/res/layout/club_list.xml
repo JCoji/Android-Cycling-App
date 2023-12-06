@@ -17,7 +17,8 @@
             android:fontFamily="serif"
             android:text=""
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/ClubEmail"
@@ -25,7 +26,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

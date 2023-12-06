@@ -9,42 +9,89 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/user_event_search_page"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="User's event Search"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        <LinearLayout
+            android:layout_width="380dp"
+            android:layout_height="650dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/SearchBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Search"
-            android:inputType="text" />
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Event Search (USER)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/searchBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="submitBtnOnClick"
-            android:text="Search" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
-        <Button
-            android:id="@+id/backBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:onClick="backBtnOnClick" />
+            <EditText
+                android:id="@+id/SearchBar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/activity_main_border"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Search Here"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="12sp"
+                android:textStyle="italic" />
 
-        <ListView
-            android:id="@+id/AllEvents"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
+            <Button
+                android:id="@+id/searchBtn"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#65FFFFFF"
+                android:fontFamily="serif"
+                android:onClick="submitBtnOnClick"
+                android:text="Enter Search"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <ListView
+                android:id="@+id/AllEvents"
+                android:layout_width="345dp"
+                android:layout_height="430dp"
+                android:background="@drawable/activity_main_border" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/backBtn"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#65FFFFFF"
+                android:fontFamily="serif"
+                android:onClick="backBtnOnClick"
+                android:text="Back"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,18 +15,24 @@
             android:id="@+id/EventName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:fontFamily="serif"
+            android:text="TextView"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/EventType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:fontFamily="serif"
+            android:text="TextView"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/ClubNameUserView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:fontFamily="serif"
+            android:text="TextView"
+            android:textColor="@color/black" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

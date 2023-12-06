@@ -43,7 +43,7 @@ public class ClubActivity extends AppCompatActivity implements ClubVerificationD
 
         clubname = (TextView) findViewById(R.id.clubText);
 
-        clubname.setText("Welcome: " + name);
+        clubname.setText(name);
 
         listViewEvents = (ListView) findViewById(R.id.CEventsList);
         eventNames = new ArrayList<>();

@@ -104,9 +104,46 @@
                 android:textColorHint="@color/white"
                 android:textSize="12sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/set_date_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#65FFFFFF"
+                    android:fontFamily="serif"
+                    android:onClick="setDateBtnOnClick"
+                    android:text="Set Date"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <Space
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0" />
+
+                <Button
+                    android:id="@+id/set_time_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#65FFFFFF"
+                    android:fontFamily="serif"
+                    android:onClick="setTimeBtnOnClick"
+                    android:text="Set Time"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="60dp" />
+                android:layout_height="10dp" />
 
             <Button
                 android:id="@+id/submit_btn"
@@ -118,24 +155,6 @@
                 android:text="Submit"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/set_date_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Set Date"
-                android:onClick="setDateBtnOnClick"/>
-
-            <Button
-                android:id="@+id/set_time_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Set Time"
-                android:onClick="setTimeBtnOnClick" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
 
             <Button
                 android:id="@+id/back_btn"
