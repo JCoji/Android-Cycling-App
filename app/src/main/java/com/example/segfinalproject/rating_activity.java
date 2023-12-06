@@ -118,13 +118,8 @@ public class rating_activity extends AppCompatActivity {
             newRatingName.setValue(username);
             newRatingScore.setValue(score);
             newRatingDesc.setValue(desc);
-        }
-    }
 
-    public void returnBtnOnClick(View view) {
-        Bundle extras = getIntent().getExtras();
-        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-        intent.putExtra("Username", extras.getString("Username"));
-        startActivity(intent);
+            Toast.makeText(rating_activity.this, "RATING SUBMITTED", Toast.LENGTH_SHORT).show();
+        }
     }
 }
