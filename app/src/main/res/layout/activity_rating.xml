@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#65FFFFFF"
                 android:fontFamily="serif"
-                android:onClick="returnBtnOnClick"
+                android:onClick="backBtnOnClick"
                 android:text="Return"
                 android:textColor="@color/black"
                 android:textSize="16sp" />

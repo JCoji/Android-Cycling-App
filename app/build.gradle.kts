@@ -45,6 +45,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
 
+
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 
@@ -63,4 +65,11 @@ dependencies {
     // Add the dependency for the Realtime Database library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-database")
+
+    // required if you want to use Mockito for unit tests
+    testImplementation ("org.mockito:mockito-core:2.24.5")
+    // required if you want to use Mockito for Android tests
+    androidTestImplementation ("org.mockito:mockito-android:2.24.5")
+
+
 }

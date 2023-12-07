@@ -97,6 +97,13 @@ public class rating_activity extends AppCompatActivity {
         return false;
     }
 
+    public void backBtnOnClick(View view) {
+        Bundle extras = getIntent().getExtras();
+        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+        intent.putExtra("Username", extras.getString("Username"));
+        startActivity(intent);
+    }
+
     public void submitBtnOnClick(View view) {
         club = clubSpinner.getSelectedItem().toString();
         score = scoreText.getText().toString();
